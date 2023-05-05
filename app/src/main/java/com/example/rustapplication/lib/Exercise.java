@@ -4,17 +4,27 @@ import androidx.annotation.NonNull;
 
 public final class Exercise {
 
-    public Exercise(@NonNull String name, long weight, long reps, long sets) {
-        mNativeObj = init(name, weight, reps, sets);
+    public Exercise(@NonNull String name, @NonNull String initial_date) {
+        mNativeObj = init(name, initial_date);
     }
-    private static native long init(@NonNull String name, long weight, long reps, long sets);
+    private static native long init(@NonNull String name, @NonNull String initial_date);
 
-    public final @NonNull String toString() {
-        String ret = do_toString(mNativeObj);
+    public final void addEntry(@NonNull Entry entry) {
+        long a0 = entry.mNativeObj;
+        entry.mNativeObj = 0;
+
+        do_addEntry(mNativeObj, a0);
+
+        JNIReachabilityFence.reachabilityFence1(entry);
+    }
+    private static native void do_addEntry(long self, long entry);
+
+    public final @NonNull String getLogString() {
+        String ret = do_getLogString(mNativeObj);
 
         return ret;
     }
-    private static native @NonNull String do_toString(long self);
+    private static native @NonNull String do_getLogString(long self);
 
     public synchronized void delete() {
         if (mNativeObj != 0) {
