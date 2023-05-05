@@ -24,6 +24,83 @@ public final class Exercise {
     }
     private static native void do_addEntry(long self, long entry);
 
+    public final @NonNull String getName() {
+        String ret = do_getName(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_getName(long self);
+
+    public final long getInitialWeight() {
+        long ret = do_getInitialWeight(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getInitialWeight(long self);
+
+    public final long getInitialReps() {
+        long ret = do_getInitialReps(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getInitialReps(long self);
+
+    public final long getInitialSets() {
+        long ret = do_getInitialSets(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getInitialSets(long self);
+
+    public final @NonNull String getInitialDate() {
+        String ret = do_getInitialDate(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_getInitialDate(long self);
+
+    public final long getMaxWeight() {
+        long ret = do_getMaxWeight(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getMaxWeight(long self);
+
+    public final long getMaxReps() {
+        long ret = do_getMaxReps(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getMaxReps(long self);
+
+    public final long getMaxSets() {
+        long ret = do_getMaxSets(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getMaxSets(long self);
+
+    public final @NonNull String getMaxDate() {
+        String ret = do_getMaxDate(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_getMaxDate(long self);
+
+    public final @NonNull String getLastDate() {
+        String ret = do_getLastDate(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_getLastDate(long self);
+
+    public final long getEntryCount() {
+        long ret = do_getEntryCount(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getEntryCount(long self);
+
     public final @NonNull String getLogString() {
         String ret = do_getLogString(mNativeObj);
 
@@ -58,6 +135,27 @@ public final class Exercise {
         return ret;
     }
     private static native @NonNull String do_prettyToString(long self);
+
+    public final @NonNull String maxToString() {
+        String ret = do_maxToString(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_maxToString(long self);
+
+    public final @NonNull String initialToString() {
+        String ret = do_initialToString(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_initialToString(long self);
+
+    public final @NonNull String resultToString() {
+        String ret = do_resultToString(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_resultToString(long self);
 
     public synchronized void delete() {
         if (mNativeObj != 0) {

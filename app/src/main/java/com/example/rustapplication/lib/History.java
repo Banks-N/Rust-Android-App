@@ -24,6 +24,37 @@ public final class History {
     }
     private static native void do_addExercise(long self, long exercise);
 
+    public final void mergeHistory(@NonNull History history) {
+        long a0 = history.mNativeObj;
+        history.mNativeObj = 0;
+
+        do_mergeHistory(mNativeObj, a0);
+
+        JNIReachabilityFence.reachabilityFence1(history);
+    }
+    private static native void do_mergeHistory(long self, long history);
+
+    public final long getExerciseCount() {
+        long ret = do_getExerciseCount(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getExerciseCount(long self);
+
+    public final @NonNull String getStartDate() {
+        String ret = do_getStartDate(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_getStartDate(long self);
+
+    public final @NonNull String getLastDate() {
+        String ret = do_getLastDate(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_getLastDate(long self);
+
     public final @NonNull String getLogString() {
         String ret = do_getLogString(mNativeObj);
 

@@ -14,6 +14,78 @@ public final class Entry {
     }
     private static native long init(@NonNull String s);
 
+    public final @NonNull String getName() {
+        String ret = do_getName(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_getName(long self);
+
+    public final void setName(@NonNull String name) {
+        do_setName(mNativeObj, name);
+    }
+    private static native void do_setName(long self, @NonNull String name);
+
+    public final long getWeight() {
+        long ret = do_getWeight(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getWeight(long self);
+
+    public final void setWeight(long weight) {
+        do_setWeight(mNativeObj, weight);
+    }
+    private static native void do_setWeight(long self, long weight);
+
+    public final long getReps() {
+        long ret = do_getReps(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getReps(long self);
+
+    public final void setReps(long reps) {
+        do_setReps(mNativeObj, reps);
+    }
+    private static native void do_setReps(long self, long reps);
+
+    public final long getSets() {
+        long ret = do_getSets(mNativeObj);
+
+        return ret;
+    }
+    private static native long do_getSets(long self);
+
+    public final void setSets(long sets) {
+        do_setSets(mNativeObj, sets);
+    }
+    private static native void do_setSets(long self, long sets);
+
+    public final @NonNull String getNotes() {
+        String ret = do_getNotes(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_getNotes(long self);
+
+    public final void setNotes(@NonNull String notes) {
+        do_setNotes(mNativeObj, notes);
+    }
+    private static native void do_setNotes(long self, @NonNull String notes);
+
+    public final @NonNull String getDate() {
+        String ret = do_getDate(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_getDate(long self);
+
+    public final void setDate(@NonNull String date) {
+        do_setDate(mNativeObj, date);
+    }
+    private static native void do_setDate(long self, @NonNull String date);
+
     public final @NonNull String toString() {
         String ret = do_toString(mNativeObj);
 
