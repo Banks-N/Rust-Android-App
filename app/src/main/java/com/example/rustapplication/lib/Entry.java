@@ -9,12 +9,31 @@ public final class Entry {
     }
     private static native long init(@NonNull String name, long weight, long reps, long sets, @NonNull String notes, @NonNull String date);
 
+    public Entry(@NonNull String s) {
+        mNativeObj = init(s);
+    }
+    private static native long init(@NonNull String s);
+
     public final @NonNull String toString() {
         String ret = do_toString(mNativeObj);
 
         return ret;
     }
     private static native @NonNull String do_toString(long self);
+
+    public final @NonNull String prettyToString() {
+        String ret = do_prettyToString(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_prettyToString(long self);
+
+    public final @NonNull String displayToString() {
+        String ret = do_displayToString(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_displayToString(long self);
 
     public synchronized void delete() {
         if (mNativeObj != 0) {

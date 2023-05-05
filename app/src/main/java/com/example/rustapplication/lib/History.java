@@ -4,10 +4,15 @@ import androidx.annotation.NonNull;
 
 public final class History {
 
-    public History(@NonNull String start_date) {
-        mNativeObj = init(start_date);
+    public History(@NonNull String start_date, long exercise_count) {
+        mNativeObj = init(start_date, exercise_count);
     }
-    private static native long init(@NonNull String start_date);
+    private static native long init(@NonNull String start_date, long exercise_count);
+
+    public History(@NonNull String s) {
+        mNativeObj = init(s);
+    }
+    private static native long init(@NonNull String s);
 
     public final void addExercise(@NonNull Exercise exercise) {
         long a0 = exercise.mNativeObj;
@@ -25,6 +30,34 @@ public final class History {
         return ret;
     }
     private static native @NonNull String do_getLogString(long self);
+
+    public final @NonNull String toString() {
+        String ret = do_toString(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_toString(long self);
+
+    public final @NonNull String prettyToString() {
+        String ret = do_prettyToString(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_prettyToString(long self);
+
+    public final @NonNull String displayToString() {
+        String ret = do_displayToString(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_displayToString(long self);
+
+    public final @NonNull String exerciseToString() {
+        String ret = do_exerciseToString(mNativeObj);
+
+        return ret;
+    }
+    private static native @NonNull String do_exerciseToString(long self);
 
     public synchronized void delete() {
         if (mNativeObj != 0) {

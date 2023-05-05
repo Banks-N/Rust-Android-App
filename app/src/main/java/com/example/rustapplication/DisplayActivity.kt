@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class AddActivity : ComponentActivity() {
+class DisplayActivity : ComponentActivity() {
 
     companion object {
         init {
@@ -39,22 +39,47 @@ class AddActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    var history = ""
+                    if (this@DisplayActivity.intent.getStringExtra("Empty") != "True") {
+                        history = History(this@DisplayActivity.intent.getStringExtra("History").toString()).displayToString()
+                    }
+
                     Column {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Spacer(modifier = Modifier.size(14.dp))
                             Row {
-                                Spacer(modifier = Modifier.size(140.dp))
+                                Spacer(modifier = Modifier.size(14.dp))
                                 Button(onClick = {
-                                    val intent = Intent(this@AddActivity, MainActivity::class.java)
+                                    val intent = Intent(this@DisplayActivity, MainActivity::class.java)
 
                                     startActivity(intent)
                                 }) {
                                     Text(text = "Add Entry")
                                 }
 
+                                Spacer(modifier = Modifier.size(53.dp))
+                                Button(onClick = {
+                                    val intent = Intent(this@DisplayActivity, AddActivity::class.java)
+                                    startActivity(intent)
+                                }) {
+                                    Text(text = "Clear")
+                                }
+
                                 Spacer(modifier = Modifier.size(14.dp))
                             }
                             Spacer(modifier = Modifier.size(14.dp))
+                        }
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Row {
+                                Spacer(modifier = Modifier.size(14.dp))
+                                OutlinedTextField(
+                                    value = history,
+                                    onValueChange = { },
+                                    label = { Text("History") },
+                                    readOnly = true
+                                )
+                                Spacer(modifier = Modifier.size(14.dp))
+                            }
                         }
                     }
                 }
